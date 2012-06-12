@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/31/trunk/MathEvaluator
+END
+StaticStack.cs
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/29/trunk/MathEvaluator/StaticStack.cs
+END
+ExpressionTree.cs
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/31/trunk/MathEvaluator/ExpressionTree.cs
+END
+MathEvaluator.csproj.user
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/3/trunk/MathEvaluator/MathEvaluator.csproj.user
+END
+OpenStack.cs
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/14/trunk/MathEvaluator/OpenStack.cs
+END
+MathEvaluator.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/29/trunk/MathEvaluator/MathEvaluator.csproj
+END
+MathExpression.cs
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/31/trunk/MathEvaluator/MathExpression.cs
+END
+MathState.cs
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/29/trunk/MathEvaluator/MathState.cs
+END

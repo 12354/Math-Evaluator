@@ -1,0 +1,86 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MathEvaluator;
+using MathEvaluator.MathOperations;
+using MathEvaluator.MathOperations.Operators;
+namespace MathEvaluator_Demo
+{
+    class Program
+    {
+        public static void PrintDouble(float a, int FixedPoint)
+        {
+            string s = a.ToString("F" + FixedPoint).TrimEnd('0');
+            if (s.EndsWith(","))
+                s = s.Remove(s.Length - 1);
+            Console.WriteLine(s);
+        }
+        public static void Main()
+        {
+            MathState s = new MathState();
+            
+            foreach (string op in s.GetOperators())
+            {
+                Console.Write(op + ",");
+            }
+            Console.WriteLine("");
+            while (true)
+            {
+                string ex = Console.ReadLine();
+                try
+                {
+                    MathExpression expression = s.CreateExpression(ex);
+
+                    StaticStack<MathOperation> expressionStack = expression.ExpressionStack;
+                    bool assignment = false;
+                    if (expressionStack.Count > 1)
+                    {
+                        if (expressionStack.Pop() is MathEvaluator.MathOperations.Operators.Equals)
+                        {
+                            float newValue = (float) expressionStack.Pop().Calculate(expressionStack);
+                            if (expressionStack.Peek() is Variable)
+                            {
+                                Variable var = (Variable)expressionStack.Pop();
+                                s.SetVariable(var.ToString(), newValue);
+
+                                Console.WriteLine("  " + var.ToString() + " -> " + newValue);
+                                assignment = true;
+                            }
+                        }
+                    }
+                    if(!assignment)
+                    {
+                        Console.WriteLine("Expression: " + expression.OriginalExpression);
+                        Console.WriteLine("PostFix: " + expression.PostFixExpression);
+                        MathExpression derived = expression.Derive(s);
+                        MathExpression dOptimized = derived;
+                        for(int i = 0;i< 5;i++)
+                        {
+                            dOptimized = dOptimized.Optimize(s);
+                        }
+
+                        Console.Write("Derived: ");
+                        derived.ExpressionTree.PrintInFix();
+                        Console.Write("\nOptimized: ");
+                        dOptimized.ExpressionTree.PrintInFix();
+                        Console.WriteLine("\n");
+                        dOptimized.ExpressionTree.PrintPreFix();
+
+                        Console.Write("\n");
+                        Console.Write("Value: ");
+                        PrintDouble((float)expression.Calculate(), 20);
+                    }
+                    Console.WriteLine("Implicit: " + expression.IsImplicit);
+                    
+                }
+                catch (Exception exc)
+                {
+                    Console.WriteLine(exc.Message);
+                }
+            }
+        }
+
+    }
+}
+
