@@ -19,7 +19,10 @@ namespace Qfi
             Functions["putpos"] = new ExternFunction(new FunctionPrototype("putpos", new List<string>() { "x", "y" }), (x, y) => { Console.SetCursorPosition((int)x, (int)y); return 0; });
             //add new put_pos function
             Functions["put_pos"] = new ExternFunction(new FunctionPrototype("putpos", new List<string>() { "x", "y" }), (x, y) => { Console.SetCursorPosition((int)x, (int)y); return 0; });
+            //add new get_char function
+            Functions["get_char"] = new ExternFunction(new FunctionPrototype("get_char", new List<string>() { "x", "y" }), (x, y) => { Console.SetCursorPosition((int)x, (int)y); return 0; });
             //add new get_pos function
+            
             Functions["get_pos"] = new ExternFunction(new FunctionPrototype("getpos", new List<string>() { "x", "y" }), (x, y) => { Console.SetCursorPosition((int)x, (int)y); return 0; });
         }
         public void SetVariable(string s, float value)
