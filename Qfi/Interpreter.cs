@@ -17,6 +17,8 @@ namespace Qfi
             Functions["read"] = new ExternFunction(new FunctionPrototype("read", new List<string>()), () =>{return Convert.ToSingle(Console.ReadLine()); });
             Functions["putchar"] = new ExternFunction(new FunctionPrototype("putchar", new List<string>() { "x" }), x => { Console.Write((char)x); return 0; });
             Functions["putpos"] = new ExternFunction(new FunctionPrototype("putpos", new List<string>() { "x", "y" }), (x, y) => { Console.SetCursorPosition((int)x, (int)y); return 0; });
+            //add new put_pos function
+            Functions["put_pos"] = new ExternFunction(new FunctionPrototype("putpos", new List<string>() { "x", "y" }), (x, y) => { Console.SetCursorPosition((int)x, (int)y); return 0; });
         }
         public void SetVariable(string s, float value)
         {
